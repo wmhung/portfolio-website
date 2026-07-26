@@ -1,4 +1,4 @@
-# Portfolio Website — Weiming Hung
+# Portfolio Website
 
 My personal portfolio site: a frontend-focused **React (Vite)** single-page app
 backed by my own **Flask REST API**. The site presents my bio, skills, and a set
