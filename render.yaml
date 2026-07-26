@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: taipei-portfolio
+    runtime: python
+    plan: free
+    # Build the React app, then install Python deps.
+    buildCommand: >-
+      cd frontend && npm ci && npm run build &&
+      cd ../backend && pip install -r requirements.txt
+    startCommand: cd backend && gunicorn app:app --bind 0.0.0.0:$PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: "3.11"
