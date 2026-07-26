@@ -1,19 +1,30 @@
-# Weiming Hung — Portfolio + Taipei Parks Explorer
+# Portfolio Website — Weiming Hung
 
-A frontend-focused portfolio built as a **React (Vite)** single-page app that
-talks to my own **Flask REST API**. The flagship piece, *Taipei Parks Explorer*,
-lets you search, filter and page through all 830 of Taipei's parks, green
-spaces and plazas (Taipei City open data).
+My personal portfolio site: a frontend-focused **React (Vite)** single-page app
+backed by my own **Flask REST API**. The site presents my bio, skills, and a set
+of projects. One of those projects — the **Taipei Parks Explorer** — is the
+interactive, full-stack centrepiece, letting visitors search, filter and page
+through all 830 of Taipei's parks, green spaces and plazas (Taipei City open
+data).
+
+## Projects featured on the site
+
+1. **Responsive Layout Showcase** — a hand-coded responsive page (no frameworks),
+   embedded live. Pure frontend craft.
+2. **Taipei Parks Explorer** — a React front end talking to my Flask REST API
+   with server-side search, filtering and pagination.
+
+## Repository structure
 
 ```
-taipei-portfolio/
-├── backend/            # Flask REST API
+Portfolio Website/
+├── backend/            # Flask REST API (shared by the site + Parks Explorer)
 │   ├── app.py
 │   ├── requirements.txt
 │   └── taipei_parks.json
-└── frontend/           # React + Vite
+└── frontend/           # React + Vite single-page app
     ├── src/
-    │   ├── components/
+    │   ├── components/  # Hero, Skills, Projects, ParksExplorer, Contact …
     │   └── styles/theme.css
     └── public/rwd/      # embedded responsive-layout showcase (Project 1)
 ```
@@ -64,13 +75,13 @@ repo. One free web service, one public URL.
 
 ## API reference
 
-| Method | Endpoint            | Purpose                                        |
-| ------ | ------------------- | ---------------------------------------------- |
-| GET    | `/api/health`       | Health check + record count                    |
-| GET    | `/api/filters`      | Distinct `types` and `areas` for the dropdowns |
-| GET    | `/api/parks`        | Filtered + paginated list                      |
-| GET    | `/api/parks/<id>`   | Single park detail                             |
-| POST   | `/api/contact`      | Contact form (server-side validation)          |
+| Method | Endpoint          | Purpose                                        |
+| ------ | ----------------- | ---------------------------------------------- |
+| GET    | `/api/health`     | Health check + record count                    |
+| GET    | `/api/filters`    | Distinct `types` and `areas` for the dropdowns |
+| GET    | `/api/parks`      | Filtered + paginated list                      |
+| GET    | `/api/parks/<id>` | Single park detail                             |
+| POST   | `/api/contact`    | Contact form (server-side validation)          |
 
 `/api/parks` query params: `search`, `type`, `area`, `page`, `per_page`.
 
@@ -78,4 +89,3 @@ repo. One free web service, one public URL.
 
 - `frontend/src/components/Contact.jsx` — set your real `GITHUB` and `LINKEDIN` URLs.
 - `frontend/src/components/Hero.jsx` — tweak the bio if you like.
-```
