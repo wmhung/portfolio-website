@@ -1,158 +1,217 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style type="text/css">
-        *{
-            margin: 0;
-            padding: 0; 
-            list-style: none;
-        }
-        img{
-            vertical-align: bottom;
-        }
-        .footer{
-            background-color: #333;
-            color:#aaa;
-            text-align: center; /* 文字置中 */
-            padding: 10px 0;
-        }
-        .item-group{
-            width: 100%;
-            max-width: 1400px;
-            margin:auto;
-        }
-        .item{
-            padding: 0;
-            margin: 0;
-        }
-        .banner img{ /* rwd 的圖片寬通常預設 100% */
-            width: 100%;
-        }
-        .title{
-            margin: 0 0 20px;
-            background-color: #ccc;
-            padding: 30px 10px;
-        }
-        .title h2{ /* 所有 h2 標題一致 */
-            text-align: center;
-            font-size:46px;
-        }
-        .title p{
-            text-align: center;
-            font-size: 22px;
-        }
-        .item{
-            margin: 0 10px 20px;
-        }
-        .item h3{
-            text-align: center;
-            font-size: 24px;
-        } 
-        .item .pic img{
-            width: 100%;
-        }
-        .service{
-            margin:0;
-            background-color: #ffa;
-        }
-        @media screen and (min-width:768px){
-            .item-group{
-                display:flex;
-            }
-            .item{
-                margin:0;
-            }
-            .service .item{
-                display: flex;
-            }
-            .service .pic,
-            .service .text{
-                width: 50%;
-            }
-            .service .item .text{ /* 把關於服務的區塊，左右各半，各自上下左右置中對齊 */
-                display: flex;
-                flex-direction: column;
-                justify-content: center;
-                box-sizing: border-box; /* 會將寬高的總長包含 padding 和 border，沒有的話，則是總長另外加上 padding 和 border */
-                padding: 0 20px;
-            }
-        }
-    </style>
-    <title>RWD-Test</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style type="text/css">
+    * {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+      box-sizing: border-box;
+      /* widths include padding so columns line up */
+    }
+
+    img {
+      /* images stretch and shrink with the viewport */
+      width: 100%;
+      height: auto;
+      display: block;
+      vertical-align: bottom;
+    }
+
+    .footer {
+      background-color: #333;
+      color: #aaa;
+      text-align: center;
+      /* 文字置中 */
+      padding: 10px 0;
+    }
+
+    .item-group {
+      width: 100%;
+      max-width: 1400px;
+      margin: auto;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      /* centre items on an incomplete last row */
+    }
+
+    .title {
+      margin: 0 0 20px;
+      background-color: #ccc;
+      padding: 30px 10px;
+    }
+
+    .title h2 {
+      /* 所有 h2 標題一致 */
+      text-align: center;
+      font-size: 46px;
+    }
+
+    .title p {
+      text-align: center;
+      font-size: 22px;
+    }
+
+    .item {
+      /* base ( < 600px ): one column */
+      width: 100%;
+      padding: 0 10px;
+      margin: 0 0 20px;
+    }
+
+    .item h3 {
+      text-align: center;
+      font-size: 24px;
+    }
+
+    .service {
+      margin: 0;
+      background-color: #ffa;
+    }
+
+    /* Second block ( 關於我們, 3 images ) : all on one row from 600px up */
+    @media screen and (min-width: 600px) {
+      .banner+.about .item-group {
+        flex-wrap: nowrap;
+      }
+
+      .banner+.about .item {
+        flex: 1 1 0;
+        width: auto;
+      }
+    }
+
+    /* Fourth block ( 產品資訊, 4 images ) : two per row between 600–899px */
+    @media screen and (min-width: 600px) and (max-width: 899px) {
+      .service+.about .item {
+        width: 50%;
+      }
+    }
+
+    /* >= 900px : the service block splits left / right, and the fourth
+                      block's four images sit on a single row */
+    @media screen and (min-width: 900px) {
+      .service .item {
+        display: flex;
+      }
+
+      .service .pic,
+      .service .text {
+        width: 50%;
+      }
+
+      .service .text {
+        /* 左右各半，文字上下置中對齊 */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 0 20px;
+      }
+
+      .service+.about .item-group {
+        flex-wrap: nowrap;
+      }
+
+      .service+.about .item {
+        flex: 1 1 0;
+        width: auto;
+      }
+    }
+  </style>
+  <title>RWD-Test</title>
 </head>
+
 <body>
-    <div class="banner">
-        <img src="https://picsum.photos/1400/500?random=1" alt="">
-    </div>
-    <div class="about">
-        <div class="wrap">
-            <div class="title">
-                <h2>關於我們</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus dicta expedita quasi ratione dolore ducimus aliquam animi itaque! Perspiciatis, nulla.</p>
-            </div>
-            <div class="item-group">
-                <div class="item">
-                    <img src="https://picsum.photos/400/300?random=11" alt="">
-                    <h3>title</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis, eum nam. Commodi vel quaerat eaque voluptate atque, voluptatum qui cum labore, nobis voluptatem laudantium saepe dicta sequi ipsa, eius dolores!</p>
-                </div>
-                <div class="item"><img src="https://picsum.photos/400/300?random=12" alt="">
-                    <h3>title</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis, eum nam. Commodi vel quaerat eaque voluptate atque, voluptatum qui cum labore, nobis voluptatem laudantium saepe dicta sequi ipsa, eius dolores!</p>
-                </div>
-                <div class="item"><img src="https://picsum.photos/400/300?random=13" alt="">
-                    <h3>title</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis, eum nam. Commodi vel quaerat eaque voluptate atque, voluptatum qui cum labore, nobis voluptatem laudantium saepe dicta sequi ipsa, eius dolores!</p>
-                </div>
-            </div>
+  <div class="banner">
+    <img src="https://picsum.photos/1400/500?random=1" alt="">
+  </div>
+  <div class="about">
+    <div class="wrap">
+      <div class="title">
+        <h2>Hi, I'm Bruce</h2>
+      </div>
+      <div class="item-group">
+        <div class="item">
+          <img src="https://picsum.photos/400/300?random=11" alt="">
+          <h3>title</h3>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis, eum nam. Commodi vel quaerat eaque
+            voluptate atque, voluptatum qui cum labore, nobis voluptatem laudantium saepe dicta sequi ipsa, eius
+            dolores!</p>
         </div>
-    </div>
-    <div class="service">
-        <div class="wrap">
-            <div class="item-group">
-                <div class="item">
-                    <div class="pic">
-                        <img src="https://picsum.photos/800/400?random=30" alt="">
-                    </div>
-                    <div class="text">
-                        <h3>title</h3>
-                        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maiores provident corrupti quaerat eaque perspiciatis est dignissimos! Totam facere quod cupiditate.</p>
-                    </div>
-                </div>
-            </div>
+        <div class="item"><img src="https://picsum.photos/400/300?random=12" alt="">
+          <h3>title</h3>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis, eum nam. Commodi vel quaerat eaque
+            voluptate atque, voluptatum qui cum labore, nobis voluptatem laudantium saepe dicta sequi ipsa, eius
+            dolores!</p>
         </div>
-    </div>
-    <div class="about">
-        <div class="wrap">
-            <div class="title">
-                <h2>產品資訊</h2>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus dicta expedita quasi ratione dolore ducimus aliquam animi itaque! Perspiciatis, nulla.</p>
-            </div>
-            <div class="item-group">
-                <div class="item">
-                    <img src="https://picsum.photos/300/200?random=21" alt="">
-                    <h3>title</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis, eum nam. Commodi vel quaerat eaque voluptate atque, voluptatum qui cum labore, nobis voluptatem laudantium saepe dicta sequi ipsa, eius dolores!</p>
-                </div>
-                <div class="item"><img src="https://picsum.photos/300/200?random=22" alt="">
-                    <h3>title</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis, eum nam. Commodi vel quaerat eaque voluptate atque, voluptatum qui cum labore, nobis voluptatem laudantium saepe dicta sequi ipsa, eius dolores!</p>
-                </div>
-                <div class="item"><img src="https://picsum.photos/300/200?random=23" alt="">
-                    <h3>title</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis, eum nam. Commodi vel quaerat eaque voluptate atque, voluptatum qui cum labore, nobis voluptatem laudantium saepe dicta sequi ipsa, eius dolores!</p>
-                </div>
-                <div class="item"><img src="https://picsum.photos/300/200?random=23" alt="">
-                    <h3>title</h3>
-                    <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis, eum nam. Commodi vel quaerat eaque voluptate atque, voluptatum qui cum labore, nobis voluptatem laudantium saepe dicta sequi ipsa, eius dolores!</p>
-                </div>
-            </div>
+        <div class="item"><img src="https://picsum.photos/400/300?random=13" alt="">
+          <h3>title</h3>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis, eum nam. Commodi vel quaerat eaque
+            voluptate atque, voluptatum qui cum labore, nobis voluptatem laudantium saepe dicta sequi ipsa, eius
+            dolores!</p>
         </div>
+      </div>
     </div>
-    <div class="footer">
-        &copy;copyright 2023 by Bruce
+  </div>
+  <div class="service">
+    <div class="wrap">
+      <div class="item-group">
+        <div class="item">
+          <div class="pic">
+            <img src="https://picsum.photos/800/400?random=30" alt="">
+          </div>
+          <div class="text">
+            <h3>title</h3>
+            <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Maiores provident corrupti quaerat eaque
+              perspiciatis est dignissimos! Totam facere quod cupiditate.</p>
+          </div>
+        </div>
+      </div>
     </div>
+  </div>
+  <div class="about">
+    <div class="wrap">
+      <div class="title">
+        <h2>產品資訊</h2>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus dicta expedita quasi ratione dolore ducimus
+          aliquam animi itaque! Perspiciatis, nulla.</p>
+      </div>
+      <div class="item-group">
+        <div class="item">
+          <img src="https://picsum.photos/300/200?random=21" alt="">
+          <h3>title</h3>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis, eum nam. Commodi vel quaerat eaque
+            voluptate atque, voluptatum qui cum labore, nobis voluptatem laudantium saepe dicta sequi ipsa, eius
+            dolores!</p>
+        </div>
+        <div class="item"><img src="https://picsum.photos/300/200?random=22" alt="">
+          <h3>title</h3>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis, eum nam. Commodi vel quaerat eaque
+            voluptate atque, voluptatum qui cum labore, nobis voluptatem laudantium saepe dicta sequi ipsa, eius
+            dolores!</p>
+        </div>
+        <div class="item"><img src="https://picsum.photos/300/200?random=23" alt="">
+          <h3>title</h3>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis, eum nam. Commodi vel quaerat eaque
+            voluptate atque, voluptatum qui cum labore, nobis voluptatem laudantium saepe dicta sequi ipsa, eius
+            dolores!</p>
+        </div>
+        <div class="item"><img src="https://picsum.photos/300/200?random=23" alt="">
+          <h3>title</h3>
+          <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Facilis, eum nam. Commodi vel quaerat eaque
+            voluptate atque, voluptatum qui cum labore, nobis voluptatem laudantium saepe dicta sequi ipsa, eius
+            dolores!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="footer">
+    &copy;copyright 2025 by Bruce
+  </div>
 </body>
+
 </html>

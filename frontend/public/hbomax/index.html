@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Streaming Platform UI (RWD study)</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+
+  <!--  Nav  -->
+  <header class="nav" id="nav">
+    <div class="nav-left">
+      <a href="#" class="brand">MAX</a>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="#" class="active">Home</a></li>
+          <li><a href="#">Series</a></li>
+          <li><a href="#">Movies</a></li>
+          <li><a href="#">Sports</a></li>
+          <li><a href="#">My List</a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="nav-right">
+      <button class="icon-btn" aria-label="Search">⌕</button>
+      <span class="avatar"><img src="https://picsum.photos/seed/user/60/60" alt="Profile" /></span>
+      <button class="hamburger" id="hbtn" aria-label="Menu">☰</button>
+    </div>
+  </header>
+
+  <div class="overlay" id="overlay"></div>
+  <nav class="mobile-menu" id="mmenu">
+    <ul>
+      <li><a href="#">Home</a></li>
+      <li><a href="#">Series</a></li>
+      <li><a href="#">Movies</a></li>
+      <li><a href="#">Sports</a></li>
+      <li><a href="#">My List</a></li>
+    </ul>
+  </nav>
+
+  <!--  Hero spotlight  -->
+  <section class="hero">
+    <div class="hero-bg"><img src="https://picsum.photos/seed/spotlight/1600/900" alt="" /></div>
+    <div class="hero-inner">
+      <span class="kicker">Max Original</span>
+      <h1>The Northern Lights</h1>
+      <div class="meta">
+        <span class="rate">TV-MA</span><span>2025</span><span>·</span><span>1 Season</span><span>·</span><span>Drama ·
+          Thriller</span>
+      </div>
+      <p>A detective returns to her frozen hometown to solve a case that never closed — and uncovers a truth the whole
+        town buried.</p>
+      <div class="hero-actions">
+        <button class="btn btn-play">▶ Play</button>
+        <button class="btn btn-ghost">＋ More Info</button>
+      </div>
+    </div>
+  </section>
+
+  <!--  Content rows  -->
+  <main class="rows" id="rows">
+    <!-- rows injected by a tiny script below to keep markup DRY -->
+  </main>
+
+  <!--  Genre grid  -->
+  <section class="genres">
+    <h2>Browse by genre</h2>
+    <div class="genre-grid" id="genreGrid"></div>
+  </section>
+
+  <!--  Footer  -->
+  <footer class="footer">
+    <div class="brand">MAX</div>
+    <div class="f-links">
+      <a href="#">About</a><a href="#">Help</a><a href="#">Terms</a><a href="#">Privacy</a>
+      <a href="#">Careers</a><a href="#">Devices</a><a href="#">Gift Cards</a>
+    </div>
+    <div>&copy; 2025 A responsive design study by Weiming.</div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+
+</html>

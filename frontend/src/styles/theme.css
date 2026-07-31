@@ -1,11 +1,7 @@
-/* ============================================================
-   Taipei Portfolio — theme
-   Refined evolution of the original grey + yellow identity,
-   with light/dark theming via CSS variables.
-   ============================================================ */
-
 :root {
+  color-scheme: light; /* light browser canvas + scrollbars */
   --accent: #fbcb0a;
+  --accent-dark: #9775fa; /* accent used in dark mode */
   --accent-ink: #2b2b2b;
 
   /* light theme (default) */
@@ -22,7 +18,9 @@
   --ease: cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-html[data-theme="dark"] {
+html[data-theme='dark'] {
+  color-scheme: dark; /* dark browser canvas + scrollbars */
+  --accent: var(--accent-dark); /* purple accent in dark mode */
   --bg: #161616;
   --bg-alt: #1e1e1e;
   --panel: #242424;
@@ -42,14 +40,19 @@ html[data-theme="dark"] {
 
 html {
   scroll-behavior: smooth;
+  background: var(
+    --bg
+  ); /* themed root canvas — no white frame before body paints */
 }
 
 body {
-  font-family: "Familjen Grotesk", system-ui, sans-serif;
+  font-family: 'Familjen Grotesk', system-ui, sans-serif;
   background: var(--bg);
   color: var(--text);
   line-height: 1.6;
-  transition: background 0.4s var(--ease), color 0.4s var(--ease);
+  transition:
+    background 0.4s var(--ease),
+    color 0.4s var(--ease);
 }
 
 a {
@@ -91,7 +94,7 @@ img {
 }
 
 .eyebrow::before {
-  content: "";
+  content: '';
   display: inline-block;
   width: 26px;
   height: 3px;
@@ -112,7 +115,7 @@ img {
   font-size: 1.1rem;
 }
 
-/* ---------- Buttons: yellow sweep-up on hover ---------- */
+/*  Buttons: yellow sweep-up on hover  */
 .btn {
   position: relative;
   display: inline-block;
@@ -132,7 +135,7 @@ img {
 }
 
 .btn::after {
-  content: "";
+  content: '';
   position: absolute;
   inset: 0;
   background: var(--accent);
@@ -163,7 +166,7 @@ img {
   color: var(--bg);
 }
 
-/* ---------- Animations ---------- */
+/*  Animations  */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -198,7 +201,7 @@ img {
   animation: fadeIn 0.8s var(--ease) forwards;
 }
 
-/* ---------- Header / nav ---------- */
+/*  Header / nav  */
 .header {
   position: fixed;
   top: 0;
@@ -213,7 +216,9 @@ img {
   backdrop-filter: blur(8px);
   background: color-mix(in srgb, var(--bg) 78%, transparent);
   border-bottom: 1px solid transparent;
-  transition: border-color 0.4s var(--ease), background 0.4s var(--ease);
+  transition:
+    border-color 0.4s var(--ease),
+    background 0.4s var(--ease);
 }
 
 .header.scrolled {
@@ -246,7 +251,7 @@ img {
 }
 
 .nav-desktop a::after {
-  content: "";
+  content: '';
   position: absolute;
   bottom: 0;
   left: 0;
@@ -274,7 +279,9 @@ img {
   font-size: 1rem;
   display: grid;
   place-items: center;
-  transition: border-color 0.3s, transform 0.3s;
+  transition:
+    border-color 0.3s,
+    transform 0.3s;
 }
 
 .theme-toggle:hover {
@@ -282,7 +289,7 @@ img {
   transform: rotate(20deg);
 }
 
-/* ---------- Hamburger ---------- */
+/*  Hamburger  */
 .hamburger {
   display: none;
   position: relative;
@@ -376,7 +383,7 @@ img {
   pointer-events: auto;
 }
 
-/* ---------- Hero ---------- */
+/*  Hero  */
 .hero {
   min-height: 100vh;
   display: flex;
@@ -386,7 +393,7 @@ img {
 }
 
 .hero::before {
-  content: "";
+  content: '';
   position: absolute;
   top: -10%;
   right: -8%;
@@ -444,7 +451,7 @@ img {
   color: var(--muted);
 }
 
-/* ---------- Skills ---------- */
+/*  Skills  */
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
@@ -458,7 +465,9 @@ img {
   border-radius: var(--radius);
   padding: 26px;
   box-shadow: var(--shadow);
-  transition: transform 0.4s var(--ease), border-color 0.4s;
+  transition:
+    transform 0.4s var(--ease),
+    border-color 0.4s;
 }
 
 .skill-card:hover {
@@ -496,7 +505,7 @@ img {
   color: var(--text);
 }
 
-/* ---------- Projects ---------- */
+/*  Projects  */
 .project {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -553,7 +562,17 @@ img {
   margin-bottom: 22px;
 }
 
-/* ---------- Parks Explorer ---------- */
+.group-title {
+  display: inline-block;
+  font-size: 1.4rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  margin: 54px 0 6px;
+  padding-bottom: 8px;
+  border-bottom: 3px solid var(--accent);
+}
+
+/*  Parks Explorer  */
 .explorer {
   margin-top: 26px;
 }
@@ -619,7 +638,9 @@ img {
   font-family: inherit;
   color: var(--text);
   box-shadow: var(--shadow);
-  transition: transform 0.35s var(--ease), border-color 0.35s;
+  transition:
+    transform 0.35s var(--ease),
+    border-color 0.35s;
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -675,7 +696,9 @@ img {
   background: var(--panel);
   color: var(--text);
   cursor: pointer;
-  transition: border-color 0.3s, background 0.3s;
+  transition:
+    border-color 0.3s,
+    background 0.3s;
 }
 
 .pagination button:hover:not(:disabled) {
@@ -698,7 +721,7 @@ img {
   color: var(--muted);
 }
 
-/* ---------- Modal ---------- */
+/*  Modal  */
 .modal-overlay {
   position: fixed;
   inset: 0;
@@ -788,7 +811,7 @@ img {
   font-size: 0.95rem;
 }
 
-/* ---------- Contact ---------- */
+/*  Contact  */
 .contact-wrap {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -868,14 +891,14 @@ img {
 }
 
 .contact-side .links a::before {
-  content: "";
+  content: '';
   width: 8px;
   height: 8px;
   background: var(--accent);
   border-radius: 50%;
 }
 
-/* ---------- Footer ---------- */
+/*  Footer  */
 .footer {
   padding: 40px 0;
   border-top: 1px solid var(--border);
@@ -886,7 +909,7 @@ img {
   letter-spacing: 0.05em;
 }
 
-/* ---------- Responsive ---------- */
+/*  Responsive  */
 @media (max-width: 860px) {
   .nav-desktop {
     display: none;
