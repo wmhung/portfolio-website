@@ -1,17 +1,14 @@
-import BrandCard from './BrandCard.jsx';
 import TwoColProject from './TwoColProject.jsx';
 
 export default function Projects() {
   return (
     <>
-      {/* Full-stack section */}
+      {/* Full-stack section — Projects 04 & 03 */}
       <section className='section section-alt' id='full-stack-02'>
         <div className='container'>
           <div className='reveal'>
             <h2 className='section-title'>Projects</h2>
           </div>
-
-          <h3 className='group-title reveal'>Full-stack</h3>
 
           {/* Project 04 — FNN */}
           <TwoColProject
@@ -43,12 +40,8 @@ export default function Projects() {
               </div>
             }
           />
-        </div>
-      </section>
 
-      {/* Project 03 */}
-      <section className='section' id='full-stack-01'>
-        <div className='container'>
+          {/* Project 03 */}
           <TwoColProject
             tag='Project 03'
             title='Taipei Parks Explorer'
@@ -61,19 +54,28 @@ export default function Projects() {
               'Pagination',
             ]}
             media={
-              <BrandCard
-                title='Taipei Parks Explorer'
-                subtitle='Browse 830 Taipei parks'
-              />
+              <div className='project-media'>
+                <img
+                  src='/img/parks.webp'
+                  alt='Taipei Parks Explorer — searchable grid of Taipei parks'
+                  loading='lazy'
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    objectPosition: 'top',
+                  }}
+                />
+              </div>
             }
             action={
               <a
-                href='http://localhost:5173'
+                href='/parks/index.html'
                 target='_blank'
                 rel='noreferrer'
                 className='btn'
               >
-                Live Demo (runs locally)
+                Live Demo
               </a>
             }
             reverse
@@ -81,11 +83,9 @@ export default function Projects() {
         </div>
       </section>
 
-      {/* front-end section */}
-      <section className='section section-alt' id='front-end'>
+      {/* front-end section — Projects 02 & 01 */}
+      <section className='section' id='front-end'>
         <div className='container'>
-          <h3 className='group-title reveal'>Front-end</h3>
-
           {/* Project 02 */}
           <TwoColProject
             tag='Project 02 '
@@ -101,11 +101,17 @@ export default function Projects() {
             ]}
             media={
               <div className='project-media'>
-                <iframe
-                  src='/hbomax/index.html'
-                  title='MAX streaming UI study'
+                <img
+                  src='/img/hbomax.webp'
+                  alt='HBO Max–style streaming interface study'
                   loading='lazy'
-                ></iframe>
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    objectPosition: 'top',
+                  }}
+                />
               </div>
             }
             action={
@@ -129,11 +135,17 @@ export default function Projects() {
             chips={['HTML5', 'CSS3', 'Flexbox', 'Media Queries']}
             media={
               <div className='project-media'>
-                <iframe
-                  src='/rwd/index.html'
-                  title='Responsive layout showcase'
+                <img
+                  src='/img/rwd.webp'
+                  alt='Responsive layout showcase'
                   loading='lazy'
-                ></iframe>
+                  style={{
+                    width: '100%',
+                    height: '100%',
+                    objectFit: 'cover',
+                    objectPosition: 'top',
+                  }}
+                />
               </div>
             }
             action={

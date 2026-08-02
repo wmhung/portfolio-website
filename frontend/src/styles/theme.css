@@ -83,7 +83,7 @@ img {
 }
 
 .section {
-  padding: 60px 0;
+  padding: 40px 0;
 }
 
 .section-alt {
@@ -528,7 +528,7 @@ img {
 }
 
 .project + .project {
-  margin-top: 40px;
+  margin-top: 24px;
 }
 
 .project-media {
@@ -668,7 +668,7 @@ img {
 
 @media (max-width: 560px) {
   .section {
-    padding: 80px 0;
+    padding: 44px 0;
   }
   .container {
     padding: 0 20px;

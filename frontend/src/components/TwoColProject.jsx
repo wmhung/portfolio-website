@@ -24,7 +24,7 @@ export default function TwoColProject({
   );
 
   return (
-    <div className='project reveal' style={{ marginTop: '50px' }}>
+    <div className='project reveal' style={{ marginTop: '16px' }}>
       {reverse ? (
         <>
           {media}
