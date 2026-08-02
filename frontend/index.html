@@ -12,8 +12,7 @@
   <meta name="description"
     content="Portfolio of Weiming Hung, a frontend / full-stack developer in Taipei. Featuring a Taipei Parks Explorer built with React and a Flask REST API." />
   <script>
-    // Apply the saved theme before first paint (anti-FOUC). Also set color-scheme
-    // and background inline so the root canvas is correct even before the CSS loads.
+    // anti-FOUC (Flash of the wrong theme on reload)
     (function () {
       try {
         var t = localStorage.getItem("theme") || "light";

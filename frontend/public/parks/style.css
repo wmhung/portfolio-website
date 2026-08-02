@@ -1,0 +1,71 @@
+:root{
+  --accent:#fbcb0a; --accent-ink:#2b2b2b;
+  --bg:#f4f4f2; --bg-alt:#e9e9e5; --panel:#ffffff;
+  --text:#2b2b2b; --muted:#6b6b6b; --border:#d8d8d3;
+  --shadow:0 6px 24px rgba(0,0,0,.08); --radius:14px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:system-ui,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--text);line-height:1.55}
+.wrap{max-width:1100px;margin:0 auto;padding:22px 20px 60px}
+header.top{margin-bottom:18px}
+.eyebrow{text-transform:uppercase;letter-spacing:.16em;font-size:.72rem;font-weight:700;color:var(--muted);margin-bottom:6px}
+.eyebrow::before{content:"";display:inline-block;width:22px;height:3px;background:var(--accent);vertical-align:middle;margin-right:9px}
+h1{font-size:clamp(1.5rem,3vw,2rem);line-height:1.15}
+h1 .mark{background:linear-gradient(transparent 60%,var(--accent) 60%)}
+.api-note{font-size:.8rem;color:var(--muted);margin-top:6px}
+.api-note code{background:var(--bg-alt);padding:1px 6px;border-radius:5px}
+
+.controls{display:flex;flex-wrap:wrap;gap:10px;margin:18px 0 6px}
+.search-box{flex:1;min-width:220px;position:relative}
+.search-box input,select{
+  width:100%;font:inherit;padding:11px 14px;border:1.5px solid var(--border);
+  border-radius:10px;background:var(--panel);color:var(--text);
+}
+select{width:auto;min-width:150px;cursor:pointer}
+.search-box input:focus,select:focus{outline:none;border-color:var(--accent)}
+.meta{font-size:.85rem;color:var(--muted);margin:10px 2px 14px;min-height:1.2em}
+
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+.card{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);
+  padding:16px 18px;box-shadow:var(--shadow);cursor:pointer;transition:.18s;display:flex;flex-direction:column;gap:6px}
+.card:hover{transform:translateY(-3px);border-color:var(--accent)}
+.card .badge{align-self:flex-start;background:var(--accent);color:var(--accent-ink);
+  font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;padding:3px 9px;border-radius:6px}
+.card h4{font-size:1.02rem;line-height:1.25}
+.card .eng{font-size:.78rem;color:var(--muted);margin-top:-2px}
+.card .area{font-size:.8rem;color:var(--muted);margin-top:auto}
+.card .area::before{content:"📍 "}
+
+.state{padding:40px 10px;text-align:center;color:var(--muted);font-size:.95rem}
+.spinner{display:inline-block;width:22px;height:22px;border:3px solid var(--border);
+  border-top-color:var(--accent);border-radius:50%;animation:spin .8s linear infinite;vertical-align:middle;margin-right:8px}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+.pager{display:flex;justify-content:center;align-items:center;gap:14px;margin-top:26px;flex-wrap:wrap}
+.pager button{font:inherit;font-weight:600;padding:9px 18px;border:1.5px solid var(--text);
+  background:transparent;color:var(--text);border-radius:10px;cursor:pointer;transition:.18s}
+.pager button:hover:not(:disabled){background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.pager button:disabled{opacity:.4;cursor:not-allowed}
+.pager .page-info{font-size:.88rem;color:var(--muted)}
+
+/* modal */
+.overlay{position:fixed;inset:0;background:rgba(0,0,0,.5);display:none;align-items:center;
+  justify-content:center;padding:20px;z-index:50}
+.overlay.show{display:flex}
+.modal{background:var(--panel);border-radius:var(--radius);max-width:560px;width:100%;
+  max-height:88vh;overflow-y:auto;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.modal-head{padding:20px 22px 14px;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--panel)}
+.modal-head .badge{background:var(--accent);color:var(--accent-ink);font-size:.68rem;font-weight:700;
+  text-transform:uppercase;padding:3px 9px;border-radius:6px}
+.modal-head h3{margin-top:10px;font-size:1.3rem}
+.modal-head .eng{font-size:.85rem;color:var(--muted)}
+.modal-close{position:absolute;top:16px;right:18px;background:none;border:none;font-size:1.6rem;
+  line-height:1;cursor:pointer;color:var(--muted)}
+.modal-close:hover{color:var(--text)}
+.modal-body{padding:18px 22px 24px}
+.modal-body p.overview{margin-bottom:16px;color:var(--text)}
+.facts{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media(max-width:480px){.facts{grid-template-columns:1fr}}
+.fact{font-size:.88rem}
+.fact .label{display:block;font-size:.72rem;text-transform:uppercase;letter-spacing:.05em;color:var(--muted);margin-bottom:2px}
+.fact .value{color:var(--text)}

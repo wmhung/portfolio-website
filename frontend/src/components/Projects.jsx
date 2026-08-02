@@ -1,4 +1,3 @@
-import ParksExplorer from './ParksExplorer.jsx';
 import BrandCard from './BrandCard.jsx';
 import TwoColProject from './TwoColProject.jsx';
 
@@ -9,11 +8,7 @@ export default function Projects() {
       <section className='section section-alt' id='full-stack-02'>
         <div className='container'>
           <div className='reveal'>
-            <p className='eyebrow'>Selected work</p>
             <h2 className='section-title'>Projects</h2>
-            <p className='lead'>
-              Four projects — two full-stack apps and two front-end builds.
-            </p>
           </div>
 
           <h3 className='group-title reveal'>Full-stack</h3>
@@ -35,8 +30,8 @@ export default function Projects() {
             media={
               <div className='project-media'>
                 <img
-                  src='/img/fnn.png'
-                  alt='FNN — Finding Next Neverland landing page'
+                  src='/img/fnn.webp'
+                  alt='FNN — Park Finder app (map and saved place list)'
                   loading='lazy'
                   style={{
                     width: '100%',
@@ -54,27 +49,35 @@ export default function Projects() {
       {/* Project 03 */}
       <section className='section' id='full-stack-01'>
         <div className='container'>
-          <div className='reveal'>
-            <span className='project-tag'>Project 03</span>
-            <h2 className='section-title' style={{ marginTop: '10px' }}>
-              Taipei Parks Explorer
-            </h2>
-            <p className='lead'>
-              Browse all 830 of Taipei&apos;s parks, green spaces and plazas. A
-              React front end fetches from my own Flask REST API — with search,
-              filtering and pagination handled server-side. Open-data source:
-              Taipei City Government.
-            </p>
-            <div className='tech-row' style={{ marginTop: '18px' }}>
-              <span className='chip'>React</span>
-              <span className='chip'>Flask</span>
-              <span className='chip'>REST API</span>
-              <span className='chip'>Fetch / async</span>
-              <span className='chip'>Pagination</span>
-            </div>
-          </div>
-
-          <ParksExplorer />
+          <TwoColProject
+            tag='Project 03'
+            title='Taipei Parks Explorer'
+            desc='Browse all 830 Taipei parks, green spaces and plazas. A React front end fetches from my own Flask REST API — with search, filtering and pagination handled server-side. Open-data source: Taipei City Government.'
+            chips={[
+              'React',
+              'Flask',
+              'REST API',
+              'Fetch / async',
+              'Pagination',
+            ]}
+            media={
+              <BrandCard
+                title='Taipei Parks Explorer'
+                subtitle='Browse 830 Taipei parks'
+              />
+            }
+            action={
+              <a
+                href='http://localhost:5173'
+                target='_blank'
+                rel='noreferrer'
+                className='btn'
+              >
+                Live Demo (runs locally)
+              </a>
+            }
+            reverse
+          />
         </div>
       </section>
 
