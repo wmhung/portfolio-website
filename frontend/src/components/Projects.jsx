@@ -4,7 +4,7 @@ export default function Projects() {
   return (
     <>
       {/* Full-stack section — Projects 04 & 03 */}
-      <section className='section section-alt' id='full-stack-02'>
+      <section className='section section-alt' id='full-stack'>
         <div className='container'>
           <div className='reveal'>
             <h2 className='section-title'>Projects</h2>
@@ -12,7 +12,7 @@ export default function Projects() {
 
           {/* Project 04 — FNN */}
           <TwoColProject
-            tag='Project 04'
+            tag='Full-stack'
             title='FNN — Park Finder'
             desc='A full-stack Next.js app for finding parks to explore with young kids. Search parks by GPS location or keyword, save favourites to a personal place list, and get point-to-point routes drawn on an interactive Leaflet map. Includes full auth (register, login, password reset), user profiles, form validation, and transactional email.'
             chips={[
@@ -43,7 +43,7 @@ export default function Projects() {
 
           {/* Project 03 */}
           <TwoColProject
-            tag='Project 03'
+            tag='Full-stack'
             title='Taipei Parks Explorer'
             desc='Browse all 830 Taipei parks, green spaces and plazas. A React front end fetches from my own Flask REST API — with search, filtering and pagination handled server-side. Open-data source: Taipei City Government.'
             chips={[

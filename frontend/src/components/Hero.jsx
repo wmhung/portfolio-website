@@ -6,12 +6,7 @@ export default function Hero() {
         <h1>
           I am <span className='mark'>Weiming&nbsp;</span>
         </h1>
-        <p>
-          A frontend / full-stack developer from Taipei. I build things with
-          HTML, CSS, JavaScript, React and Python, and I love solving problems
-          through code. Currently seeking a frontend or full-stack developer
-          role.
-        </p>
+        <p>I love solving problems through code.</p>
         <div className='hero-actions'>
           <a href='#full-stack-02' className='btn btn-solid'>
             View my work

@@ -1,32 +1,34 @@
 const GROUPS = [
   {
-    title: 'Frontend',
+    title: 'Languages',
+    items: ['JavaScript (ES6)', 'TypeScript', 'HTML5', 'CSS3', 'Python'],
+  },
+  {
+    title: 'Frameworks / Libraries',
     items: [
-      'HTML5',
-      'CSS3',
-      'Responsive / RWD',
-      'Flexbox',
-      'Media Queries',
-      'BEM',
+      'React',
+      'Next.js',
+      'Redux',
+      'Tailwind CSS',
+      'React Hook Form',
+      'Zod',
     ],
   },
   {
-    title: 'JavaScript',
+    title: 'Backend & Database',
     items: [
-      'ES6+',
-      'DOM & Events',
-      'Fetch / AJAX',
-      'Promises / async',
-      'OOP & Prototypes',
+      'Node.js / Express',
+      'Supabase',
+      'PostgreSQL',
+      'MongoDB',
+      'NextAuth.js',
+      'REST APIs',
+      'OpenAI API',
     ],
   },
   {
-    title: 'React',
-    items: ['Components', 'Hooks', 'State & Props', 'Vite'],
-  },
-  {
-    title: 'Backend & Data',
-    items: ['Python', 'Flask', 'REST APIs', 'pandas', 'JSON', 'Validation'],
+    title: 'Cloud & DevOps',
+    items: ['Vercel', 'Render', 'Netlify', 'Docker', 'Git / GitHub'],
   },
 ];
 
