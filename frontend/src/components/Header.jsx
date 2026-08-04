@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 
 const LINKS = [
   ['#skills', 'Skills'],
-  ['#full-stack-02', 'Full-stack'],
+  ['#full-stack', 'Full-stack'],
   ['#front-end', 'Front-end'],
 ];
 
