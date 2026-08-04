@@ -8,7 +8,7 @@ export default function Hero() {
         </h1>
         <p>I love solving problems through code.</p>
         <div className='hero-actions'>
-          <a href='#full-stack-02' className='btn btn-solid'>
+          <a href='#full-stack' className='btn btn-solid'>
             View my work
           </a>
           <a
