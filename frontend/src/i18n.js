@@ -33,7 +33,7 @@ export const STRINGS = {
 
   zh: {
     dir: 'zh',
-    nav: { skills: '技能', fullstack: '全端', frontend: '前端' },
+    nav: { skills: '技術能力', fullstack: '全端作品', frontend: '前端作品' },
     langToggle: { label: 'EN', aria: '切換至英文' },
     hero: {
       role: '前端工程師',
@@ -41,7 +41,6 @@ export const STRINGS = {
       name: '暐銘',
       intro: '我熱愛用程式解決問題。',
       cta: '查看作品',
-      resume: '履歷',
       contact: '聯絡我',
     },
     skills: {
@@ -50,16 +49,16 @@ export const STRINGS = {
         languages: '程式語言',
         frameworks: '框架 / 函式庫',
         backend: '後端與資料庫',
-        cloud: '雲端與 DevOps',
+        cloud: '雲端與開發維運',
       },
     },
     projects: {
-      title: '專案',
-      liveDemo: '線上展示',
+      title: '專案作品',
+      liveDemo: '瀏覽作品',
       p04: '一款全端 Next.js 應用，協助帶著孩子尋找適合探索的公園。可依 GPS 位置或關鍵字搜尋公園、將喜愛的地點收藏到個人清單，並在互動式 Leaflet 地圖上繪製點對點路線。具備完整的身分驗證（註冊、登入、重設密碼）、使用者個人檔案、表單驗證與交易信件。',
       p03: '瀏覽全台北 830 座公園、綠地與廣場。React 前端串接我自建的 Flask REST API，搜尋、篩選與分頁皆由伺服器端處理。開放資料來源：台北市政府。',
       p02: '不依賴框架、以 HBO Max 風格打造的串流介面，作為響應式設計練習。包含會收合成側滑選單的固定導覽列、漸層遮罩的主視覺、以資料陣列生成的水平 scroll-snap 輪播，以及從 2 → 3 → 4 欄變化的 CSS Grid 分類牆。行動優先，僅使用示意圖片，未使用任何 HBO 素材或商標。',
-      p01: '訓練營時期手刻的響應式頁面，未使用任何框架或 Bootstrap。流動式圖片與行動優先斷點（600 / 900 / 1200px），卡片區塊會從單欄重排到多欄的完整排列。',
+      p01: '利用線上資源學習手刻的響應式頁面，未使用任何框架或 Bootstrap。流動式圖片與行動優先斷點（600 / 900 / 1200px），卡片區塊會從單欄重排到多欄的完整排列。',
     },
     footer: { builtWith: '以 React 與 Flask 打造' },
   },
