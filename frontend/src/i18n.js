@@ -40,7 +40,7 @@ export const STRINGS = {
       iam: '我是',
       name: '暐銘',
       intro: '我熱愛用程式解決問題。',
-      cta: '查看作品',
+      cta: '瀏覽作品',
       contact: '聯絡我',
     },
     skills: {
