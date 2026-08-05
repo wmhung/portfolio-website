@@ -541,6 +541,12 @@ img {
   color: var(--text);
 }
 
+#full-stack .chip {
+  background: var(--bg);
+  border-color: var(--border);
+  color: var(--text);
+}
+
 /* ---------- Projects ---------- */
 .project {
   display: grid;
