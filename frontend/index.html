@@ -6,13 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400..700;1,400..700&display=swap"
+  <link
+    href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400..700;1,400..700&family=Noto+Sans+TC:wght@400;500;700&display=swap"
     rel="stylesheet" />
   <title>Weiming Hung — Frontend Developer</title>
-  <meta name="description"
-    content="Portfolio of Weiming Hung, a frontend / full-stack developer in Taipei. Featuring a Taipei Parks Explorer built with React and a Flask REST API." />
+  <meta name="description" content="Front-End Developer — Weiming's Portfolio" />
   <script>
-    // anti-FOUC (Flash of the wrong theme on reload)
+    // Apply the saved theme before first paint (anti-FOUC). Also set color-scheme
+    // and background inline so the root canvas is correct even before the CSS loads.
     (function () {
       try {
         var t = localStorage.getItem("theme") || "light";
@@ -20,6 +21,8 @@
         d.setAttribute("data-theme", t);
         d.style.colorScheme = t === "dark" ? "dark" : "light";
         d.style.background = t === "dark" ? "#161616" : "#f4f4f2";
+        var lang = localStorage.getItem("lang") || "en";
+        d.setAttribute("lang", lang === "zh" ? "zh-Hant" : "en");
       } catch (e) { }
     })();
   </script>

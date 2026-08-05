@@ -1,10 +1,10 @@
 const GROUPS = [
   {
-    title: 'Languages',
+    key: 'languages',
     items: ['JavaScript (ES6)', 'TypeScript', 'HTML5', 'CSS3', 'Python'],
   },
   {
-    title: 'Frameworks / Libraries',
+    key: 'frameworks',
     items: [
       'React',
       'Next.js',
@@ -15,7 +15,7 @@ const GROUPS = [
     ],
   },
   {
-    title: 'Backend & Database',
+    key: 'backend',
     items: [
       'Node.js / Express',
       'Supabase',
@@ -27,25 +27,25 @@ const GROUPS = [
     ],
   },
   {
-    title: 'Cloud & DevOps',
+    key: 'cloud',
     items: ['Vercel', 'Render', 'Netlify', 'Docker', 'Git / GitHub'],
   },
 ];
 
-export default function Skills() {
+export default function Skills({ t }) {
   return (
     <section className='section' id='skills'>
       <div className='container'>
         <div className='reveal'>
-          <h2 className='section-title'>Skills</h2>
+          <h2 className='section-title'>{t.skills.title}</h2>
         </div>
 
         <div className='skills-grid'>
           {GROUPS.map((g) => (
-            <div className='skill-card reveal' key={g.title}>
+            <div className='skill-card reveal' key={g.key}>
               <h3>
                 <span className='dot'></span>
-                {g.title}
+                {t.skills.groups[g.key]}
               </h3>
               <div className='chips'>
                 {g.items.map((i) => (

@@ -1,20 +1,20 @@
 import TwoColProject from './TwoColProject.jsx';
 
-export default function Projects() {
+export default function Projects({ t }) {
   return (
     <>
       {/* Full-stack section — Projects 04 & 03 */}
       <section className='section section-alt' id='full-stack'>
         <div className='container'>
           <div className='reveal'>
-            <h2 className='section-title'>Projects</h2>
+            <h2 className='section-title'>{t.projects.title}</h2>
           </div>
 
           {/* Project 04 — FNN */}
           <TwoColProject
-            tag='Full-stack'
+            tag='Project 04'
             title='FNN — Park Finder'
-            desc='A full-stack Next.js app for finding parks to explore with young kids. Search parks by GPS location or keyword, save favourites to a personal place list, and get point-to-point routes drawn on an interactive Leaflet map. Includes full auth (register, login, password reset), user profiles, form validation, and transactional email.'
+            desc={t.projects.p04}
             chips={[
               'Next.js',
               'TypeScript',
@@ -43,9 +43,9 @@ export default function Projects() {
 
           {/* Project 03 */}
           <TwoColProject
-            tag='Full-stack'
+            tag='Project 03'
             title='Taipei Parks Explorer'
-            desc='Browse all 830 Taipei parks, green spaces and plazas. A React front end fetches from my own Flask REST API — with search, filtering and pagination handled server-side. Open-data source: Taipei City Government.'
+            desc={t.projects.p03}
             chips={[
               'React',
               'Flask',
@@ -75,7 +75,7 @@ export default function Projects() {
                 rel='noreferrer'
                 className='btn'
               >
-                Live Demo
+                {t.projects.liveDemo}
               </a>
             }
             reverse
@@ -90,7 +90,7 @@ export default function Projects() {
           <TwoColProject
             tag='Project 02 '
             title='Streaming PlatformUI'
-            desc='A framework-free HBO Max–style streaming interface, built as a responsive design study. A sticky nav that collapses into a slide-in mobile menu, a gradient-scrim spotlight hero, horizontal scroll-snap carousels generated from a data array, and a CSS-Grid genre wall that steps 2 → 3 → 4 columns. Mobile-first, placeholder imagery only — no HBO assets or trademarks.'
+            desc={t.projects.p02}
             chips={[
               'HTML5',
               'CSS3',
@@ -121,7 +121,7 @@ export default function Projects() {
                 rel='noreferrer'
                 className='btn'
               >
-                Live Demo
+                {t.projects.liveDemo}
               </a>
             }
             reverse
@@ -131,7 +131,7 @@ export default function Projects() {
           <TwoColProject
             tag='Project 01'
             title='Responsive Layout Showcase'
-            desc='A hand-coded responsive page from my bootcamp — no frameworks, no Bootstrap. Fluid images and mobile-first breakpoints at 600 / 900 / 1200px, with card sections that reflow from a single column up to a full multi-column row.'
+            desc={t.projects.p01}
             chips={['HTML5', 'CSS3', 'Flexbox', 'Media Queries']}
             media={
               <div className='project-media'>
@@ -155,7 +155,7 @@ export default function Projects() {
                 rel='noreferrer'
                 className='btn'
               >
-                Live Demo
+                {t.projects.liveDemo}
               </a>
             }
           />

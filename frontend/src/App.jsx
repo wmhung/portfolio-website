@@ -4,6 +4,7 @@ import Hero from './components/Hero.jsx';
 import Skills from './components/Skills.jsx';
 import Projects from './components/Projects.jsx';
 import Footer from './components/Footer.jsx';
+import { STRINGS } from './i18n.js';
 
 export default function App() {
   // Start from the saved choice; default to light when nothing is stored.
@@ -12,6 +13,15 @@ export default function App() {
       return localStorage.getItem('theme') || 'light';
     } catch {
       return 'light';
+    }
+  });
+
+  // Language: default English; remembered across reloads (same pattern as theme).
+  const [lang, setLang] = useState(() => {
+    try {
+      return localStorage.getItem('lang') || 'en';
+    } catch {
+      return 'en';
     }
   });
 
@@ -24,6 +34,19 @@ export default function App() {
       /* storage unavailable — ignore */
     }
   }, [theme]);
+
+  // Apply language to <html lang> and remember the choice across reloads.
+  useEffect(() => {
+    document.documentElement.setAttribute(
+      'lang',
+      lang === 'zh' ? 'zh-Hant' : 'en',
+    );
+    try {
+      localStorage.setItem('lang', lang);
+    } catch {
+      /* storage unavailable — ignore */
+    }
+  }, [lang]);
 
   // Reveal-on-scroll for elements with .reveal
   useEffect(() => {
@@ -45,15 +68,24 @@ export default function App() {
 
   const toggleTheme = () => setTheme((t) => (t === 'light' ? 'dark' : 'light'));
 
+  const toggleLang = () => setLang((l) => (l === 'en' ? 'zh' : 'en'));
+
+  const t = STRINGS[lang] || STRINGS.en;
+
   return (
     <>
-      <Header theme={theme} onToggleTheme={toggleTheme} />
+      <Header
+        theme={theme}
+        onToggleTheme={toggleTheme}
+        t={t}
+        onToggleLang={toggleLang}
+      />
       <main>
-        <Hero />
-        <Skills />
-        <Projects />
+        <Hero t={t} />
+        <Skills t={t} />
+        <Projects t={t} />
       </main>
-      <Footer />
+      <Footer t={t} />
     </>
   );
 }

@@ -1,18 +1,18 @@
-export default function Hero() {
+export default function Hero({ t }) {
   return (
     <section className='hero' id='top'>
       <div className='container hero-inner reveal'>
-        <h2>Frontend Developer</h2>
+        <h2>{t.hero.role}</h2>
         <h1>
-          I am <span className='mark'>Weiming&nbsp;</span>
+          {t.hero.iam} <span className='mark'>{t.hero.name}&nbsp;</span>
         </h1>
-        <p>I love solving problems through code.</p>
+        <p>{t.hero.intro}</p>
         <div className='hero-actions'>
           <a href='#full-stack' className='btn btn-solid'>
-            View my work
+            {t.hero.cta}
           </a>
           <a
-            href='https://github.com/your-username'
+            href='https://github.com/wmhung'
             target='_blank'
             rel='noreferrer'
             className='icon-link'
@@ -28,8 +28,8 @@ export default function Hero() {
             target='_blank'
             rel='noreferrer'
             className='icon-link'
-            aria-label='Resume (PDF)'
-            title='Resume'
+            aria-label={t.hero.resume}
+            title={t.hero.resume}
           >
             <svg
               viewBox='0 -960 960 960'
@@ -42,8 +42,8 @@ export default function Hero() {
           <a
             href='mailto:brucewmhung@gmail.com'
             className='icon-link'
-            aria-label='Email'
-            title='Contact me'
+            aria-label={t.hero.contact}
+            title={t.hero.contact}
           >
             <svg
               viewBox='0 -960 960 960'

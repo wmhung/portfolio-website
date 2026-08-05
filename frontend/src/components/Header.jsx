@@ -1,12 +1,13 @@
 import { useEffect, useState } from 'react';
 
+// href + which nav key in the dictionary supplies the label
 const LINKS = [
-  ['#skills', 'Skills'],
-  ['#full-stack', 'Full-stack'],
-  ['#front-end', 'Front-end'],
+  ['#skills', 'skills'],
+  ['#full-stack', 'fullstack'],
+  ['#front-end', 'frontend'],
 ];
 
-export default function Header({ theme, onToggleTheme }) {
+export default function Header({ theme, onToggleTheme, t, onToggleLang }) {
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
 
@@ -32,15 +33,23 @@ export default function Header({ theme, onToggleTheme }) {
 
         <nav className='nav-desktop'>
           <ul>
-            {LINKS.map(([href, label]) => (
+            {LINKS.map(([href, key]) => (
               <li key={href}>
-                <a href={href}>{label}</a>
+                <a href={href}>{t.nav[key]}</a>
               </li>
             ))}
           </ul>
         </nav>
 
         <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
+          <button
+            className='lang-toggle'
+            onClick={onToggleLang}
+            aria-label={t.langToggle.aria}
+            title={t.langToggle.aria}
+          >
+            {t.langToggle.label}
+          </button>
           <button
             className='theme-toggle'
             onClick={onToggleTheme}
@@ -84,10 +93,10 @@ export default function Header({ theme, onToggleTheme }) {
       <div className={`overlay ${open ? 'show' : ''}`} onClick={close}></div>
       <nav className={`mobile-menu ${open ? 'show' : ''}`}>
         <ul>
-          {LINKS.map(([href, label]) => (
+          {LINKS.map(([href, key]) => (
             <li key={href}>
               <a href={href} onClick={close}>
-                {label}
+                {t.nav[key]}
               </a>
             </li>
           ))}
