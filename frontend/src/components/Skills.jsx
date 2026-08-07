@@ -1,36 +1,73 @@
+import { useState } from 'react';
+
+// Brand logos come from the Devicon CDN at runtime. Skills without a logo
+// (abstract ones, or ones intentionally left plain) render as text-only chips.
+// Black logos (invert) flip to white in dark mode.
+const CDN = 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/';
+
 const GROUPS = [
   {
     key: 'languages',
-    items: ['JavaScript (ES6)', 'TypeScript', 'HTML5', 'CSS3', 'Python'],
+    items: [
+      { name: 'JavaScript (ES6)', icon: 'javascript/javascript-original' },
+      { name: 'TypeScript', icon: 'typescript/typescript-original' },
+      { name: 'HTML5', icon: 'html5/html5-original' },
+      { name: 'CSS3', icon: 'css3/css3-original' },
+      { name: 'Python', icon: 'python/python-original' },
+    ],
   },
   {
     key: 'frameworks',
     items: [
-      'React',
-      'Next.js',
-      'Redux',
-      'Tailwind CSS',
-      'React Hook Form',
-      'Zod',
+      { name: 'React', icon: 'react/react-original' },
+      { name: 'Next.js', icon: 'nextjs/nextjs-original', invert: true },
+      { name: 'Tailwind CSS', icon: 'tailwindcss/tailwindcss-original' },
+      { name: 'React Hook Form' },
+      { name: 'Zod' },
     ],
   },
   {
     key: 'backend',
     items: [
-      'Node.js / Express',
-      'Supabase',
-      'PostgreSQL',
-      'MongoDB',
-      'NextAuth.js',
-      'REST APIs',
-      'OpenAI API',
+      { name: 'Node.js', icon: 'nodejs/nodejs-original' },
+      { name: 'Supabase', icon: 'supabase/supabase-original' },
+      { name: 'PostgreSQL', icon: 'postgresql/postgresql-original' },
+      { name: 'MongoDB', icon: 'mongodb/mongodb-original' },
+      { name: 'NextAuth.js' },
+      { name: 'REST APIs' },
+      { name: 'OpenAI API' },
     ],
   },
   {
     key: 'cloud',
-    items: ['Vercel', 'Render', 'Netlify', 'Docker', 'Git / GitHub'],
+    items: [
+      { name: 'Vercel', icon: 'vercel/vercel-original', invert: true },
+      { name: 'Render' },
+      { name: 'Netlify', icon: 'netlify/netlify-original' },
+      { name: 'Git / GitHub', icon: 'git/git-original' },
+    ],
   },
 ];
+
+function SkillChip({ item }) {
+  const [failed, setFailed] = useState(false);
+  const showLogo = item.icon && !failed;
+
+  return (
+    <span className='skill-chip'>
+      {showLogo && (
+        <img
+          className={item.invert ? 'dark-invert' : undefined}
+          src={`${CDN}${item.icon}.svg`}
+          alt=''
+          loading='lazy'
+          onError={() => setFailed(true)}
+        />
+      )}
+      {item.name}
+    </span>
+  );
+}
 
 export default function Skills({ t }) {
   return (
@@ -47,11 +84,9 @@ export default function Skills({ t }) {
                 <span className='dot'></span>
                 {t.skills.groups[g.key]}
               </h3>
-              <div className='chips'>
-                {g.items.map((i) => (
-                  <span className='chip' key={i}>
-                    {i}
-                  </span>
+              <div className='skill-chips'>
+                {g.items.map((it) => (
+                  <SkillChip item={it} key={it.name} />
                 ))}
               </div>
             </div>

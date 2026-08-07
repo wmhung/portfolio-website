@@ -13,7 +13,7 @@ export default function Projects({ t }) {
           {/* Project 04 — FNN */}
           <TwoColProject
             tag='Project 04'
-            title='FNN — Park Finder'
+            title='Finding Next Neverland'
             desc={t.projects.p04}
             chips={[
               'Next.js',
@@ -38,6 +38,16 @@ export default function Projects({ t }) {
                   }}
                 />
               </div>
+            }
+            action={
+              <a
+                href='https://findingneverland.vercel.app/'
+                target='_blank'
+                rel='noreferrer'
+                className='btn'
+              >
+                {t.projects.liveDemo}
+              </a>
             }
           />
 
