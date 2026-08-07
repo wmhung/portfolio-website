@@ -1,37 +1,83 @@
-# Portfolio Website
+# Portfolio Website — Weiming
 
-My personal portfolio site: a frontend-focused **React (Vite)** single-page app
-backed by my own **Flask REST API**. The site presents my bio, skills, and a set
-of projects. One of those projects — the **Taipei Parks Explorer** — is the
-interactive, full-stack centrepiece, letting visitors search, filter and page
-through all 830 of Taipei's parks, green spaces and plazas (Taipei City open
-data).
+My personal developer portfolio: a frontend-focused **React (Vite)** single-page
+app backed by my own **Flask REST API**. It presents a short bio, a
+resume-accurate skills breakdown, and four projects grouped into full-stack and
+front-end work. The centrepiece is the **Taipei Parks Explorer**, an interactive
+page that searches, filters and pages through all 830 of Taipei's parks, green
+spaces and plazas (Taipei City open data) via the live API.
 
-## Projects featured on the site
+The site is **bilingual** (English / 繁體中文) with a language toggle, ships a
+**light/dark theme** toggle, and is fully responsive.
 
-1. **Responsive Layout Showcase** — a hand-coded responsive page (no frameworks),
-   embedded live. Pure frontend craft.
-2. **Taipei Parks Explorer** — a React front end talking to my Flask REST API
-   with server-side search, filtering and pagination.
+## Live site
+
+- **Frontend:** hosted on Vercel — `https://<your-project>.vercel.app`
+- **API:** hosted on Render — `https://taipei-portfolio.onrender.com`
+
+> The Vercel frontend proxies `/api/*` to the Render backend (see
+> `frontend/vercel.json`), so the Parks Explorer calls the API same-origin with
+> no CORS. On Render's free tier the first API request after idle can take
+> ~30 s to wake.
+
+## Features
+
+- Single-page React app with reveal-on-scroll animations and a sticky nav that
+  collapses into a slide-in mobile menu.
+- Bilingual UI (EN / 繁中) driven by a single `STRINGS` table in `src/i18n.js`;
+  choice persisted in `localStorage`.
+- Light/dark theme with a blocking head script to prevent a flash on reload;
+  choice persisted in `localStorage`.
+- Live full-stack demo (Parks Explorer) plus three self-contained static demos.
+
+## Projects featured
+
+| #   | Project                        | Group      | Stack                                                                |
+| --- | ------------------------------ | ---------- | -------------------------------------------------------------------- |
+| 04  | **FNN — Park Finder**          | Full-stack | Next.js, TypeScript, Supabase, Leaflet, RHF, Zod, Tailwind           |
+| 03  | **Taipei Parks Explorer**      | Full-stack | React + **Flask REST API**, server-side search / filter / pagination |
+| 02  | **Streaming Platform UI**      | Front-end  | HTML5, CSS3, CSS Grid, Scroll Snap, Vanilla JS                       |
+| 01  | **Responsive Layout Showcase** | Front-end  | HTML5, CSS3, Flexbox, Media Queries                                  |
+
+Projects 04 and 02–01 link out to live demo pages / screenshots; **Project 03**
+is the interactive page served from `public/parks/`, talking to the Flask API.
+
+## Tech stack
+
+**Frontend:** React 18, Vite 5, plain CSS with custom-property theming.
+**Backend:** Python, Flask 3, Flask-CORS, gunicorn (production).
+**Data:** Taipei City open data (`backend/taipei_parks.json`, 830 records).
+**Hosting:** Vercel (frontend) + Render (Flask API).
 
 ## Repository structure
 
 ```
 Portfolio Website/
-├── backend/            # Flask REST API (shared by the site + Parks Explorer)
-│   ├── app.py
-│   ├── requirements.txt
-│   └── taipei_parks.json
-└── frontend/           # React + Vite single-page app
+├── render.yaml                 # Render Blueprint (Flask API + built SPA)
+├── backend/                    # Flask REST API
+│   ├── app.py                  # routes + serves frontend/dist in production
+│   ├── requirements.txt        # Flask, flask-cors, gunicorn
+│   └── taipei_parks.json       # 830-park dataset
+└── frontend/                   # React + Vite SPA
+    ├── vercel.json             # proxies /api/* → Render backend
+    ├── vite.config.js          # dev proxy /api → localhost:5001
     ├── src/
-    │   ├── components/  # Hero, Skills, Projects, ParksExplorer, Contact …
-    │   └── styles/theme.css
-    └── public/rwd/      # embedded responsive-layout showcase (Project 1)
+    │   ├── App.jsx             # theme + language state
+    │   ├── i18n.js             # EN / 繁中 strings
+    │   ├── components/         # Header, Hero, Skills, Projects, TwoColProject, Footer
+    │   └── styles/theme.css    # grey + yellow design system, light/dark tokens
+    ├── public/                 # copied verbatim into the build
+    │   ├── parks/              # Project 03 explorer (index.html + style.css + script.js)
+    │   ├── rwd/                # Project 01 demo
+    │   ├── hbomax/             # Project 02 demo
+    │   ├── img/                # project screenshots (webp)
+    │   └── resume.pdf
+    └── dist/                   # built output (committed so Render serves it without Node)
 ```
 
 ## Run it locally
 
-You need two terminals: one for the API, one for the frontend dev server.
+Two terminals — one for the API, one for the Vite dev server.
 
 **1. Backend (Flask) — port 5001**
 
@@ -51,27 +97,33 @@ npm run dev                                            # http://localhost:5173
 ```
 
 Open http://localhost:5173. The Vite dev server proxies `/api/*` to Flask on
-5001 (configured in `vite.config.js`), so the Parks Explorer and contact form
-work with no CORS setup.
+5001 (`vite.config.js`), so the Parks Explorer works with no CORS setup.
 
-## Build for production (single service)
-
-`app.py` serves the built React app, so one process runs everything:
+## Build for production
 
 ```bash
 cd frontend && npm run build          # outputs frontend/dist
-cd ../backend && python app.py        # serves API + the built SPA on :5001
 ```
 
-## Deploy to Render
+`dist/` is committed so the Render service can serve it with only Python (no Node
+at build time). Rebuild and commit `dist/` after any frontend change.
 
-This repo includes `render.yaml` (a Render Blueprint). It:
+## Deployment
 
-1. builds the frontend (`npm ci && npm run build`), and
-2. serves the API + built SPA with gunicorn.
+Two supported setups:
 
-Push to GitHub, then in Render choose **New → Blueprint** and point it at the
-repo. One free web service, one public URL.
+**A. Hybrid — Vercel (frontend) + Render (backend)** _(current)_
+
+1. Deploy the backend on Render (below) and note its URL.
+2. Set that URL as the `destination` in `frontend/vercel.json`.
+3. On Vercel: import the repo, set **Root Directory: `frontend`**, deploy.
+   Vercel serves the static site; `/api/*` is proxied to Render.
+
+**B. All-in-one on Render**
+`app.py` also serves the built SPA, so one Render service can host everything.
+Push to GitHub, then **New → Blueprint** and point Render at the repo
+(`render.yaml`): it installs Python and runs gunicorn, serving the API + SPA on
+one URL.
 
 ## API reference
 
@@ -81,11 +133,7 @@ repo. One free web service, one public URL.
 | GET    | `/api/filters`    | Distinct `types` and `areas` for the dropdowns |
 | GET    | `/api/parks`      | Filtered + paginated list                      |
 | GET    | `/api/parks/<id>` | Single park detail                             |
-| POST   | `/api/contact`    | Contact form (server-side validation)          |
+| POST   | `/api/contact`    | Server-side validation demo                    |
 
 `/api/parks` query params: `search`, `type`, `area`, `page`, `per_page`.
-
-## To personalise before interviews
-
-- `frontend/src/components/Contact.jsx` — set your real `GITHUB` and `LINKEDIN` URLs.
-- `frontend/src/components/Hero.jsx` — tweak the bio if you like.
+Response: `{ items, total, page, perPage, totalPages }`.
