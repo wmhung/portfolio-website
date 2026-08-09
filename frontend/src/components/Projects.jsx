@@ -79,12 +79,8 @@ export default function Projects({ t }) {
               </div>
             }
             action={
-              <a
-                href='/parks/index.html'
-                target='_blank'
-                rel='noreferrer'
-                className='btn'
-              >
+              /* TODO: fill in the Project 03 live-demo URL (standalone app) */
+              <a href='#' target='_blank' rel='noreferrer' className='btn'>
                 {t.projects.liveDemo}
               </a>
             }
