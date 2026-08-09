@@ -8,12 +8,6 @@ The site is **bilingual** (English / 繁體中文) with a language toggle, ships
 **light/dark theme** toggle, and is fully responsive. It's a pure front-end build
 — no backend or API of its own.
 
-> **Note:** The **Taipei Parks Explorer** (Project 03) used to be embedded here as
-> a live React + Flask app. It has been split into its own repository /
-> `Taipei Parks Explorer` folder (frontend on Vercel, Flask API on Render). In this
-> portfolio, Project 03 is now a showcase card that links out to that separately
-> hosted app.
-
 ## Live site
 
 - **Frontend:** hosted on Vercel — https://portfolio-website-weiming.vercel.app
@@ -65,7 +59,6 @@ Portfolio Website/
         ├── rwd/                # Project 01 demo
         ├── hbomax/             # Project 02 demo
         ├── img/                # project screenshots (webp)
-        └── resume.pdf
 ```
 
 ## Run it locally
