@@ -79,7 +79,6 @@ export default function Projects({ t }) {
               </div>
             }
             action={
-              /* TODO: fill in the Project 03 live-demo URL (standalone app) */
               <a
                 href='https://taipei-parks-explorer.vercel.app/'
                 target='_blank'
