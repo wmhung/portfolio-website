@@ -90,12 +90,3 @@ npm run build          # outputs frontend/dist
 Import the repo on Vercel, set **Root Directory: `frontend`**, and deploy. Vercel
 auto-detects Vite (build `npm run build`, output `dist`). No server, no
 environment variables required.
-
-## Personalise before sharing
-
-- `frontend/src/components/Projects.jsx` — set Project 03's "Live Demo" link
-  (currently `#`) to your deployed Taipei Parks Explorer URL.
-- `frontend/src/components/Hero.jsx` — set your real GitHub URL and confirm the
-  résumé / email links.
-- `frontend/public/img/parks.webp` — the Project 03 card screenshot; refresh if
-  you restyle the explorer.
