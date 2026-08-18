@@ -1,10 +1,9 @@
 :root {
-  color-scheme: light; /* light browser canvas + scrollbars */
+  color-scheme: light;
   --accent: #fbcb0a;
-  --accent-dark: #9775fa; /* accent used in dark mode */
+  --accent-dark: #9775fa;
   --accent-ink: #2b2b2b;
 
-  /* light theme (default) */
   --bg: #f4f4f2;
   --bg-alt: #e9e9e5;
   --panel: #ffffff;
@@ -19,8 +18,9 @@
 }
 
 html[data-theme='dark'] {
-  color-scheme: dark; /* dark browser canvas + scrollbars */
-  --accent: var(--accent-dark); /* purple accent in dark mode */
+  color-scheme: dark;
+  --accent: var(--accent-dark);
+  --accent-ink: #f5f3ff;
   --bg: #161616;
   --bg-alt: #1e1e1e;
   --panel: #242424;
@@ -40,9 +40,7 @@ html[data-theme='dark'] {
 
 html {
   scroll-behavior: smooth;
-  background: var(
-    --bg
-  ); /* themed root canvas — no white frame before body paints */
+  background: var(--bg);
 }
 
 body {
@@ -325,15 +323,18 @@ img {
 }
 
 /* ---------- Hamburger ---------- */
+
 .hamburger {
   display: none;
-  position: relative;
+  position: fixed;
+  top: 29px;
+  right: 30px;
   width: 26px;
   height: 20px;
   background: none;
   border: none;
   cursor: pointer;
-  z-index: 40;
+  z-index: 45;
 }
 
 .hamburger span {
@@ -589,7 +590,6 @@ html[data-theme='dark'] .skill-chip img.dark-invert {
   color: var(--text);
 }
 
-/* Full-stack section only: light-gray filled chips */
 #full-stack .chip {
   background-color: #e0e0db;
   border-color: transparent;
@@ -737,6 +737,10 @@ html[data-theme='dark'] #full-stack .chip {
   .hamburger {
     display: block;
   }
+
+  .header {
+    padding-right: 74px;
+  }
   .project {
     grid-template-columns: 1fr;
     gap: 30px;
@@ -757,18 +761,15 @@ html[data-theme='dark'] #full-stack .chip {
 
 /* ---------- Accessibility ---------- */
 
-/* Visible keyboard focus ring (WCAG 2.4.7) */
 :focus-visible {
   outline: 3px solid var(--accent);
   outline-offset: 2px;
   border-radius: 3px;
 }
-/* Suppress the ring for pointer interactions that still match :focus */
 :focus:not(:focus-visible) {
   outline: none;
 }
 
-/* Skip-to-content link — off-screen until it receives keyboard focus */
 .skip-link {
   position: absolute;
   left: 12px;
@@ -787,7 +788,6 @@ html[data-theme='dark'] #full-stack .chip {
   top: 12px;
 }
 
-/* Respect "reduce motion" system preference (WCAG 2.3.3) */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

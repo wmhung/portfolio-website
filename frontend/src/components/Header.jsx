@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
+// href + which nav key in the dictionary supplies the label
 const LINKS = [
   ['#skills', 'skills'],
   ['#full-stack', 'fullstack'],
@@ -84,19 +85,20 @@ export default function Header({ theme, onToggleTheme }) {
               </svg>
             )}
           </button>
-          <button
-            className={`hamburger ${open ? 'open' : ''}`}
-            onClick={() => setOpen((o) => !o)}
-            aria-label='Menu'
-            aria-expanded={open}
-            aria-controls='mobile-menu'
-          >
-            <span></span>
-            <span></span>
-            <span></span>
-          </button>
         </div>
       </header>
+
+      <button
+        className={`hamburger ${open ? 'open' : ''}`}
+        onClick={() => setOpen((o) => !o)}
+        aria-label='Menu'
+        aria-expanded={open}
+        aria-controls='mobile-menu'
+      >
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
 
       <div className={`overlay ${open ? 'show' : ''}`} onClick={close}></div>
       <nav
