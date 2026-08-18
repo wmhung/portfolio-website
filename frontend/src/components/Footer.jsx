@@ -1,4 +1,7 @@
-export default function Footer({ t }) {
+import { useTranslation } from 'react-i18next';
+
+export default function Footer() {
+  const { t } = useTranslation();
   return (
     <footer className='footer'>
       <div className='container'>Weiming &copy; {new Date().getFullYear()}</div>

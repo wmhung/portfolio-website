@@ -1,8 +1,6 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
-// Brand logos come from the Devicon CDN at runtime. Skills without a logo
-// (abstract ones, or ones intentionally left plain) render as text-only chips.
-// Black logos (invert) flip to white in dark mode.
 const CDN = 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/';
 
 const GROUPS = [
@@ -69,12 +67,13 @@ function SkillChip({ item }) {
   );
 }
 
-export default function Skills({ t }) {
+export default function Skills() {
+  const { t } = useTranslation();
   return (
     <section className='section' id='skills'>
       <div className='container'>
         <div className='reveal'>
-          <h2 className='section-title'>{t.skills.title}</h2>
+          <h2 className='section-title'>{t('skills.title')}</h2>
         </div>
 
         <div className='skills-grid'>
@@ -82,7 +81,7 @@ export default function Skills({ t }) {
             <div className='skill-card reveal' key={g.key}>
               <h3>
                 <span className='dot'></span>
-                {t.skills.groups[g.key]}
+                {t(`skills.groups.${g.key}`)}
               </h3>
               <div className='skill-chips'>
                 {g.items.map((it) => (

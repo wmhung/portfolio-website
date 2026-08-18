@@ -1,20 +1,22 @@
 import TwoColProject from './TwoColProject.jsx';
+import { useTranslation } from 'react-i18next';
 
-export default function Projects({ t }) {
+export default function Projects() {
+  const { t } = useTranslation();
   return (
     <>
       {/* Full-stack section — Projects 04 & 03 */}
       <section className='section section-alt' id='full-stack'>
         <div className='container'>
           <div className='reveal'>
-            <h2 className='section-title'>{t.projects.title}</h2>
+            <h2 className='section-title'>{t('projects.title')}</h2>
           </div>
 
           {/* Project 04 — FNN */}
           <TwoColProject
             tag='Project 04'
             title='Finding Next Neverland'
-            desc={t.projects.p04}
+            desc={t('projects.p04')}
             chips={[
               'Next.js',
               'TypeScript',
@@ -46,7 +48,7 @@ export default function Projects({ t }) {
                 rel='noreferrer'
                 className='btn'
               >
-                {t.projects.liveDemo}
+                {t('projects.liveDemo')}
               </a>
             }
           />
@@ -55,7 +57,7 @@ export default function Projects({ t }) {
           <TwoColProject
             tag='Project 03'
             title='Taipei Parks Explorer'
-            desc={t.projects.p03}
+            desc={t('projects.p03')}
             chips={[
               'React',
               'Flask',
@@ -85,7 +87,7 @@ export default function Projects({ t }) {
                 rel='noreferrer'
                 className='btn'
               >
-                {t.projects.liveDemo}
+                {t('projects.liveDemo')}
               </a>
             }
             reverse
@@ -100,7 +102,7 @@ export default function Projects({ t }) {
           <TwoColProject
             tag='Project 02 '
             title='Streaming PlatformUI'
-            desc={t.projects.p02}
+            desc={t('projects.p02')}
             chips={[
               'HTML5',
               'CSS3',
@@ -131,7 +133,7 @@ export default function Projects({ t }) {
                 rel='noreferrer'
                 className='btn'
               >
-                {t.projects.liveDemo}
+                {t('projects.liveDemo')}
               </a>
             }
             reverse
@@ -141,7 +143,7 @@ export default function Projects({ t }) {
           <TwoColProject
             tag='Project 01'
             title='Responsive Layout Showcase'
-            desc={t.projects.p01}
+            desc={t('projects.p01')}
             chips={['HTML5', 'CSS3', 'Flexbox', 'Media Queries']}
             media={
               <div className='project-media'>
@@ -165,7 +167,7 @@ export default function Projects({ t }) {
                 rel='noreferrer'
                 className='btn'
               >
-                {t.projects.liveDemo}
+                {t('projects.liveDemo')}
               </a>
             }
           />

@@ -1,15 +1,21 @@
 import { useEffect, useState } from 'react';
+import { useTranslation } from 'react-i18next';
 
-// href + which nav key in the dictionary supplies the label
 const LINKS = [
   ['#skills', 'skills'],
   ['#full-stack', 'fullstack'],
   ['#front-end', 'frontend'],
 ];
 
-export default function Header({ theme, onToggleTheme, t, onToggleLang }) {
+export default function Header({ theme, onToggleTheme }) {
+  const { t, i18n } = useTranslation();
   const [open, setOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+
+  const toggleLang = () =>
+    i18n.changeLanguage(
+      (i18n.resolvedLanguage || 'en').startsWith('zh') ? 'en' : 'zh',
+    );
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 20);
@@ -35,7 +41,7 @@ export default function Header({ theme, onToggleTheme, t, onToggleLang }) {
           <ul>
             {LINKS.map(([href, key]) => (
               <li key={href}>
-                <a href={href}>{t.nav[key]}</a>
+                <a href={href}>{t(`nav.${key}`)}</a>
               </li>
             ))}
           </ul>
@@ -44,11 +50,11 @@ export default function Header({ theme, onToggleTheme, t, onToggleLang }) {
         <div style={{ display: 'flex', alignItems: 'center', gap: '14px' }}>
           <button
             className='lang-toggle'
-            onClick={onToggleLang}
-            aria-label={t.langToggle.aria}
-            title={t.langToggle.aria}
+            onClick={toggleLang}
+            aria-label={t('langToggle.aria')}
+            title={t('langToggle.aria')}
           >
-            {t.langToggle.label}
+            {t('langToggle.label')}
           </button>
           <button
             className='theme-toggle'
@@ -82,6 +88,8 @@ export default function Header({ theme, onToggleTheme, t, onToggleLang }) {
             className={`hamburger ${open ? 'open' : ''}`}
             onClick={() => setOpen((o) => !o)}
             aria-label='Menu'
+            aria-expanded={open}
+            aria-controls='mobile-menu'
           >
             <span></span>
             <span></span>
@@ -91,12 +99,16 @@ export default function Header({ theme, onToggleTheme, t, onToggleLang }) {
       </header>
 
       <div className={`overlay ${open ? 'show' : ''}`} onClick={close}></div>
-      <nav className={`mobile-menu ${open ? 'show' : ''}`}>
+      <nav
+        id='mobile-menu'
+        className={`mobile-menu ${open ? 'show' : ''}`}
+        aria-label='Mobile'
+      >
         <ul>
           {LINKS.map(([href, key]) => (
             <li key={href}>
               <a href={href} onClick={close}>
-                {t.nav[key]}
+                {t(`nav.${key}`)}
               </a>
             </li>
           ))}
