@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://portfolio-weiming.vercel.app/sitemap.xml
