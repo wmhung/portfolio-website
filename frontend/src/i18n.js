@@ -6,7 +6,7 @@ const resources = {
   en: {
     translation: {
       nav: { skills: 'Skills', fullstack: 'Full-stack', frontend: 'Front-end' },
-      langToggle: { label: '中', aria: 'Switch to Chinese' },
+      langToggle: { label: '中', aria: '中 — Switch to Chinese' },
       hero: {
         role: 'Frontend Developer',
         iam: 'I am',
@@ -33,13 +33,14 @@ const resources = {
         p02: 'A framework-free HBO Max–style streaming interface, built as a responsive design study. A sticky nav that collapses into a slide-in mobile menu, a gradient-scrim spotlight hero, horizontal scroll-snap carousels generated from a data array, and a CSS-Grid genre wall that steps 2 → 3 → 4 columns. Mobile-first, placeholder imagery only — no HBO assets or trademarks.',
         p01: 'A hand-coded responsive page from my bootcamp — no frameworks, no Bootstrap. Fluid images and mobile-first breakpoints at 600 / 900 / 1200px, with card sections that reflow from a single column up to a full multi-column row.',
       },
+      footer: { builtWith: 'Built with React & Flask' },
     },
   },
 
   zh: {
     translation: {
       nav: { skills: '技術能力', fullstack: '全端專案', frontend: '前端專案' },
-      langToggle: { label: 'EN', aria: '切換至英文' },
+      langToggle: { label: 'EN', aria: 'EN — 切換至英文' },
       hero: {
         role: '前端工程師',
         iam: '我是',
