@@ -4,19 +4,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!-- Preload the self-hosted headline font (LCP element) -->
+  <link rel="preload" href="/fonts/familjen-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
+
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <!-- Load fonts without blocking render: preload as style, then flip media to
-       'all' on load so the headline (LCP) paints in a fallback immediately. -->
   <link rel="preload" as="style"
-    href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400..700;1,400..700&family=Noto+Sans+TC:wght@400;500;700&display=swap" />
-  <link
-    href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400..700;1,400..700&family=Noto+Sans+TC:wght@400;500;700&display=swap"
-    rel="stylesheet" media="print" onload="this.media='all'" />
+    href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet"
+    media="print" onload="this.media='all'" />
   <noscript>
-    <link
-      href="https://fonts.googleapis.com/css2?family=Familjen+Grotesk:ital,wght@0,400..700;1,400..700&family=Noto+Sans+TC:wght@400;500;700&display=swap"
-      rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
   </noscript>
   <title>Weiming Hung — Frontend Developer</title>
   <meta name="description"
@@ -33,7 +31,7 @@
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
 
-  <!-- Structured data: Person schema for rich results -->
+  <!-- Structured data: Person schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
