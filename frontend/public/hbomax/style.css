@@ -37,7 +37,7 @@ ul {
   list-style: none;
 }
 
-/* Top nav  */
+/* ---------- Top nav ---------- */
 .nav {
   position: fixed;
   top: 0;
@@ -162,11 +162,11 @@ ul {
   pointer-events: auto;
 }
 
-/* Hero spotlight */
+/* ---------- Hero spotlight ---------- */
 .hero {
   position: relative;
   width: 100%;
-  min-height: 100vh;
+  min-height: 78vh;
   display: flex;
   align-items: flex-end;
   padding: 0 16px 34px;
@@ -276,7 +276,7 @@ ul {
   background: rgba(120, 120, 140, 0.6);
 }
 
-/* Content rows / carousels */
+/* ---------- Content rows / carousels ---------- */
 .rows {
   padding: 20px 0 40px;
   position: relative;
@@ -371,7 +371,7 @@ ul {
   right: 0;
 }
 
-/*  Genre grid (CSS Grid demo) */
+/* ---------- Genre grid (CSS Grid demo) ---------- */
 .genres {
   padding: 10px 16px 46px;
 }
@@ -403,7 +403,7 @@ ul {
   text-shadow: 0 1px 6px rgba(0, 0, 0, 0.5);
 }
 
-/* Footer */
+/* ---------- Footer ---------- */
 .footer {
   background: #0c0c12;
   border-top: 1px solid #20202c;
@@ -425,7 +425,9 @@ ul {
   margin-bottom: 10px;
 }
 
-/* Breakpoints — mobile-first */
+/* =========================================================
+   Breakpoints — mobile-first: add complexity as space grows
+   ========================================================= */
 @media (min-width: 600px) {
   .card {
     width: 150px;

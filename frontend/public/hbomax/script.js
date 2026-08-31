@@ -1,4 +1,4 @@
-/*  mobile menu  */
+/* ---- mobile menu ---- */
 var hbtn = document.getElementById('hbtn'),
   mmenu = document.getElementById('mmenu'),
   overlay = document.getElementById('overlay');
@@ -13,13 +13,13 @@ hbtn.addEventListener('click', function () {
 });
 overlay.addEventListener('click', closeMenu);
 
-/*  shrink nav bg on scroll  */
+/* ---- shrink nav bg on scroll ---- */
 var nav = document.getElementById('nav');
 window.addEventListener('scroll', function () {
   nav.classList.toggle('scrolled', window.scrollY > 30);
 });
 
-/*  build carousels (DRY: data -> DOM)  */
+/* ---- build carousels (DRY: data -> DOM) ---- */
 var ROWS = [
   { title: 'Trending Now', seed: 'trend', n: 12 },
   { title: 'Max Originals', seed: 'orig', n: 12 },
@@ -38,10 +38,9 @@ ROWS.forEach(function (r) {
     var card = document.createElement('div');
     card.className = 'card';
     card.innerHTML =
-      '<img src="https://picsum.photos/seed/' +
-      r.seed +
-      i +
-      '/300/450" alt="" loading="lazy" />' +
+      '<img src="img/poster-' +
+      ((i % 8) + 1) +
+      '.jpg" alt="" loading="lazy" />' +
       '<div class="cap">Title ' +
       (i + 1) +
       '</div>';
@@ -72,7 +71,7 @@ ROWS.forEach(function (r) {
   rows.appendChild(wrap);
 });
 
-/*  genre grid  */
+/* ---- genre grid ---- */
 var GENRES = [
   'Action',
   'Comedy',
