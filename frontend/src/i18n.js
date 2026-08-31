@@ -2,6 +2,7 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 
+// Translation resources. Two locales, one "translation" namespace each.
 const resources = {
   en: {
     translation: {
@@ -79,21 +80,49 @@ i18n
     resources,
     fallbackLng: 'en',
     supportedLngs: ['en', 'zh'],
-    load: 'languageOnly',
+    load: 'languageOnly', // treat zh-TW / zh-Hant as "zh"
     detection: {
+      // Reuse the "lang" key the site already saved, so existing visitors keep their choice.
       order: ['localStorage', 'navigator'],
       lookupLocalStorage: 'lang',
       caches: ['localStorage'],
     },
-    interpolation: { escapeValue: false },
+    interpolation: { escapeValue: false }, // React already escapes
   });
 
+// Keep <html lang> in sync for accessibility / SEO.
 const applyHtmlLang = (lng) =>
   document.documentElement.setAttribute(
     'lang',
     lng && lng.startsWith('zh') ? 'zh-Hant' : 'en',
   );
-applyHtmlLang(i18n.resolvedLanguage);
-i18n.on('languageChanged', applyHtmlLang);
+
+// Load the Traditional Chinese web font (Noto Sans TC) ONLY when Chinese is
+// active.
+let zhFontRequested = false;
+const ensureChineseFont = (lng) => {
+  if (zhFontRequested || !lng || !lng.startsWith('zh')) return;
+  zhFontRequested = true;
+  const pre1 = Object.assign(document.createElement('link'), {
+    rel: 'preconnect',
+    href: 'https://fonts.googleapis.com',
+  });
+  const pre2 = document.createElement('link');
+  pre2.rel = 'preconnect';
+  pre2.href = 'https://fonts.gstatic.com';
+  pre2.crossOrigin = 'anonymous';
+  const css = Object.assign(document.createElement('link'), {
+    rel: 'stylesheet',
+    href: 'https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap',
+  });
+  document.head.append(pre1, pre2, css);
+};
+
+const onLang = (lng) => {
+  applyHtmlLang(lng);
+  ensureChineseFont(lng);
+};
+onLang(i18n.resolvedLanguage);
+i18n.on('languageChanged', onLang);
 
 export default i18n;

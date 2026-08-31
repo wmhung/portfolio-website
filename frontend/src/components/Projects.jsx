@@ -30,6 +30,8 @@ export default function Projects() {
               <div className='project-media'>
                 <img
                   src='/img/fnn.webp'
+                  srcSet='/img/fnn-640.webp 640w, /img/fnn.webp 1600w'
+                  sizes='(max-width: 700px) 92vw, 560px'
                   alt='FNN — Park Finder app (map and saved place list)'
                   loading='lazy'
                   style={{
@@ -69,6 +71,8 @@ export default function Projects() {
               <div className='project-media'>
                 <img
                   src='/img/parks.webp'
+                  srcSet='/img/parks-640.webp 640w, /img/parks.webp 1500w'
+                  sizes='(max-width: 700px) 92vw, 560px'
                   alt='Taipei Parks Explorer — searchable grid of Taipei parks'
                   loading='lazy'
                   style={{
@@ -81,12 +85,8 @@ export default function Projects() {
               </div>
             }
             action={
-              <a
-                href='https://taipei-parks-explorer.vercel.app/'
-                target='_blank'
-                rel='noreferrer'
-                className='btn'
-              >
+              /* TODO: fill in the Project 03 live-demo URL (standalone app) */
+              <a href='#' target='_blank' rel='noreferrer' className='btn'>
                 {t('projects.liveDemo')}
               </a>
             }
@@ -115,6 +115,8 @@ export default function Projects() {
               <div className='project-media'>
                 <img
                   src='/img/hbomax.webp'
+                  srcSet='/img/hbomax-640.webp 640w, /img/hbomax.webp 1500w'
+                  sizes='(max-width: 700px) 92vw, 560px'
                   alt='HBO Max–style streaming interface study'
                   loading='lazy'
                   style={{
@@ -149,6 +151,8 @@ export default function Projects() {
               <div className='project-media'>
                 <img
                   src='/img/rwd.webp'
+                  srcSet='/img/rwd-640.webp 640w, /img/rwd.webp 1500w'
+                  sizes='(max-width: 700px) 92vw, 560px'
                   alt='Responsive layout showcase'
                   loading='lazy'
                   style={{
