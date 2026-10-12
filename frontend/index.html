@@ -5,17 +5,17 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-  <!-- Preload the self-hosted headline font (LCP element) so it paints ASAP. -->
+  <!-- headline font: preloaded (it's the LCP) -->
   <link rel="preload" href="/fonts/familjen-grotesk-latin-wght-normal.woff2" as="font" type="font/woff2" crossorigin />
 
-  <!-- Noto Sans  is loaded on demand from src/i18n.js -->
+  <!-- Noto Sans TC loads on demand — see i18n.js -->
   <title>Weiming Hung — Frontend Developer</title>
   <meta name="description"
     content="Full-stack developer portfolio — React, Next.js, and Flask. Projects, skills, and contact." />
   <link rel="canonical" href="https://portfolio-weiming.vercel.app/" />
   <meta name="theme-color" content="#fbcb0a" />
 
-  <!-- Open Graph (link previews on LinkedIn, Facebook, Slack, etc.) -->
+  <!-- Open Graph: link previews -->
   <meta property="og:type" content="website" />
   <meta property="og:title" content="Weiming Hung — Frontend Developer" />
   <meta property="og:description" content="Full-stack developer portfolio — React, Next.js, and Flask." />
@@ -24,7 +24,7 @@
   <meta property="og:image:width" content="1200" />
   <meta property="og:image:height" content="630" />
 
-  <!-- Structured data: Person schema for rich results -->
+  <!-- Person schema -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
@@ -38,6 +38,7 @@
     ]
   }
   </script>
+  <!-- set saved theme before first paint (no flash) -->
   <script>
     (function () {
       try {
@@ -54,6 +55,7 @@
 </head>
 
 <body>
+  <!-- static hero paints before JS; React replaces #root on mount -->
   <div id="root">
     <section class="hero" id="top">
       <div class="container hero-inner">

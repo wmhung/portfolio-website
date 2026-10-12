@@ -19,7 +19,7 @@ window.addEventListener('scroll', function () {
   nav.classList.toggle('scrolled', window.scrollY > 30);
 });
 
-/* ---- build carousels (DRY: data -> DOM) ---- */
+/* ---- carousels, built from data ---- */
 var ROWS = [
   { title: 'Trending Now', seed: 'trend', n: 12 },
   { title: 'Max Originals', seed: 'orig', n: 12 },

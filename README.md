@@ -1,85 +1,70 @@
-# Portfolio Website — Weiming Hung
+# Portfolio — Weiming Hung
 
-My personal developer portfolio: a **static React (Vite)** single-page app. It
-presents a short bio, a resume-accurate skills breakdown, and four projects
-grouped into full-stack and front-end work.
+My developer portfolio: a React + Vite single-page app. Short bio, a skills
+breakdown, and four projects. It's bilingual (English / 繁體中文) with a language
+toggle and a light/dark switch. Pure front-end — no backend, no database of its
+own.
 
-The site is **bilingual** (English / 繁體中文) with a language toggle, ships a
-**light/dark theme** toggle, and is fully responsive. It's a pure front-end build
-— no backend or API of its own.
+Live: https://portfolio-website-weiming.vercel.app
 
-## Live site
+## Projects
 
-- **Frontend:** hosted on Vercel — https://portfolio-website-weiming.vercel.app
+| #   | Project                   | Stack                                   | Where the card links         |
+| --- | ------------------------- | --------------------------------------- | ---------------------------- |
+| 04  | FNN — Park Finder         | Next.js, TypeScript, Supabase, Leaflet  | its own Vercel app           |
+| 03  | Taipei Parks Explorer     | React + Flask REST API                  | standalone app (hosted apart) |
+| 02  | Streaming Platform UI     | HTML, CSS Grid, Scroll Snap, vanilla JS | static demo in `public/hbomax/` |
+| 01  | Responsive Layout Showcase| HTML, CSS, Flexbox, media queries       | static demo in `public/rwd/` |
 
-## Features
+Projects 04 and 03 are separate apps the cards open in a new tab. 02 and 01 are
+small self-contained demos that ship inside this site.
 
-- Single-page React app with reveal-on-scroll animations and a sticky nav that
-  collapses into a slide-in mobile menu.
-- Bilingual UI (EN / 繁中) driven by a single `STRINGS` table in `src/i18n.js`;
-  choice persisted in `localStorage`.
-- Light/dark theme with a blocking head script to prevent a flash on reload;
-  choice persisted in `localStorage`.
-- Four project cards; each links out to a live demo, a hosted app, or a
-  self-contained static demo.
+## Stack
 
-## Projects featured
+React 18, Vite 5, react-i18next for the two languages, plain CSS with custom
+properties for theming. Hosted on Vercel as a static site.
 
-| #   | Project                        | Group      | Stack                                                      |
-| --- | ------------------------------ | ---------- | ---------------------------------------------------------- |
-| 04  | **FNN — Park Finder**          | Full-stack | Next.js, TypeScript, Supabase, Leaflet, RHF, Zod, Tailwind |
-| 03  | **Taipei Parks Explorer**      | Full-stack | React + Flask REST API — _hosted separately_               |
-| 02  | **Streaming Platform UI**      | Front-end  | HTML5, CSS3, CSS Grid, Scroll Snap, Vanilla JS             |
-| 01  | **Responsive Layout Showcase** | Front-end  | HTML5, CSS3, Flexbox, Media Queries                        |
-
-- **Project 04** links to its live Vercel app.
-- **Project 03** links to the standalone Taipei Parks Explorer (set the URL in
-  `frontend/src/components/Projects.jsx` — currently a `#` placeholder).
-- **Projects 02 & 01** are self-contained static demos in `public/` (`hbomax/`, `rwd/`).
-
-## Tech stack
-
-**Frontend:** React 18, Vite 5, plain CSS with custom-property theming.
-**Hosting:** Vercel (static site).
-
-## Repository structure
-
-```
-Portfolio Website/
-└── frontend/                   # React + Vite SPA (the whole site)
-    ├── vite.config.js          # Vite + React plugin (no proxy)
-    ├── index.html
-    ├── package.json
-    ├── src/
-    │   ├── App.jsx             # theme + language state
-    │   ├── i18n.js             # EN / 繁中 strings
-    │   ├── components/         # Header, Hero, Skills, Projects, TwoColProject, Footer
-    │   └── styles/theme.css    # grey + yellow design system, light/dark tokens
-    └── public/                 # copied verbatim into the build
-        ├── rwd/                # Project 01 demo
-        ├── hbomax/             # Project 02 demo
-        ├── img/                # project screenshots (webp)
-```
-
-## Run it locally
+## Run it
 
 ```bash
 cd frontend
 npm install
-npm run dev            # http://localhost:5173
+npm run dev          # http://localhost:5173
 ```
 
-No backend to start — it's a static front end.
-
-## Build for production
+Before running Lighthouse, test the real (minified) build instead — the dev
+server scores low because it ships unbundled source:
 
 ```bash
-cd frontend
-npm run build          # outputs frontend/dist
+npm run build        # -> frontend/dist
+npm run preview      # http://localhost:4173
 ```
 
-## Deployment (Vercel)
+## Deploy
 
-Import the repo on Vercel, set **Root Directory: `frontend`**, and deploy. Vercel
-auto-detects Vite (build `npm run build`, output `dist`). No server, no
-environment variables required.
+Vercel, Root Directory `frontend`. It auto-detects Vite (build `npm run build`,
+output `dist`). No env vars, no server.
+
+## Layout
+
+```
+frontend/
+├── index.html            # inlined static hero so the page paints before JS
+├── src/
+│   ├── App.jsx           # theme + reveal-on-scroll
+│   ├── i18n.js           # en / 繁中 strings + on-demand Chinese font
+│   ├── components/       # Header, Hero, Skills, Projects, TwoColProject, Footer
+│   └── styles/theme.css  # grey + yellow theme, light/dark tokens
+└── public/
+    ├── hbomax/           # Project 02 demo
+    ├── rwd/              # Project 01 demo
+    └── img/              # project screenshots (webp)
+```
+
+## Notes
+
+- Scores 96 on mobile Lighthouse (Slow-4G). Two things do most of that: the hero
+  is pre-rendered into `index.html` so it shows before the JS loads, and the
+  Chinese font only downloads when you switch to 中文.
+- `dist/` is generated by the build. Don't edit it by hand — Vercel rebuilds it
+  on every deploy.

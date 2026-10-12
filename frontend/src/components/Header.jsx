@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useTranslation } from 'react-i18next';
 
-// href + which nav key in the dictionary supplies the label
+// [anchor, nav label key]
 const LINKS = [
   ['#skills', 'skills'],
   ['#full-stack', 'fullstack'],

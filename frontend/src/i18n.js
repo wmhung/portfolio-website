@@ -2,7 +2,7 @@ import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import LanguageDetector from 'i18next-browser-languagedetector';
 
-// Translation resources. Two locales, one "translation" namespace each.
+// strings: en + zh
 const resources = {
   en: {
     translation: {
@@ -82,9 +82,9 @@ i18n
     resources,
     fallbackLng: 'en',
     supportedLngs: ['en', 'zh'],
-    load: 'languageOnly', // treat zh-TW / zh-Hant as "zh"
+    load: 'languageOnly', // zh-TW / zh-Hant → zh
     detection: {
-      // Reuse the "lang" key the site already saved, so existing visitors keep their choice.
+      // reuse the saved "lang" key
       order: ['localStorage', 'navigator'],
       lookupLocalStorage: 'lang',
       caches: ['localStorage'],
@@ -92,15 +92,14 @@ i18n
     interpolation: { escapeValue: false }, // React already escapes
   });
 
-// Keep <html lang> in sync for accessibility / SEO.
+// keep <html lang> current
 const applyHtmlLang = (lng) =>
   document.documentElement.setAttribute(
     'lang',
     lng && lng.startsWith('zh') ? 'zh-Hant' : 'en',
   );
 
-// Load the Traditional Chinese web font (Noto Sans TC) ONLY when Chinese is
-// active.
+// load the Chinese font (Noto Sans TC) only when zh is active
 let zhFontRequested = false;
 const ensureChineseFont = (lng) => {
   if (zhFontRequested || !lng || !lng.startsWith('zh')) return;
