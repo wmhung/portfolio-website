@@ -24,6 +24,7 @@ const resources = {
           frameworks: 'Frameworks / Libraries',
           backend: 'Backend & Database',
           cloud: 'Cloud & DevOps',
+          testing: 'Testing',
         },
       },
       projects: {
@@ -58,6 +59,7 @@ const resources = {
           frameworks: '框架 / 函式庫',
           backend: '後端與資料庫',
           cloud: '雲端與開發維運',
+          testing: '測試',
         },
       },
       projects: {

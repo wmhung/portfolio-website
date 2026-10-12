@@ -45,6 +45,14 @@ const GROUPS = [
       { name: 'Git / GitHub', icon: 'git/git-original' },
     ],
   },
+  {
+    key: 'testing',
+    items: [
+      { name: 'Vitest', icon: 'vitest/vitest-original' },
+      { name: 'React Testing Library' },
+      { name: 'Playwright', icon: 'playwright/playwright-original' },
+    ],
+  },
 ];
 
 function SkillChip({ item }) {
